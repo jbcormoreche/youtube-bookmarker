@@ -35,7 +35,7 @@
 
       bookmarkBtn.src = chrome.runtime.getURL("assets/bookmark.png");
       bookmarkBtn.className = "ytp-button " + "bookmark-btn";
-      bookmarkBtn.title = "Click to bookmark current timestamp";
+      bookmarkBtn.title = "Bookmark current timestamp";
 
       youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
       youtubePlayer = document.getElementsByClassName('video-stream')[0];
@@ -53,7 +53,7 @@
       newVideoLoaded();
     } else if (type === "PLAY") {
       youtubePlayer.currentTime = value;
-    } else if ( type === "DELETE") {
+    } else if (type === "DELETE") {
       currentVideoBookmarks = currentVideoBookmarks.filter((b) => b.time != value);
       chrome.storage.sync.set({ [currentVideo]: JSON.stringify(currentVideoBookmarks) });
 
