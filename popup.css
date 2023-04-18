@@ -1,53 +1,65 @@
+body {
+  background-color: #303443;
+  font-family: "YouTube Sans", "Roboto", sans-serif;
+}
+
 .container {
-  width: 280px;
-  color: #314d3e;
+  color: #DAD7D4;
+  width: 230px;
 }
 
 .title {
+  color: #DAD7D4;
   font-size: 14px;
   font-weight: bold;
   padding: 8px;
+  text-align: center;
 }
 
 .textbox {
-  width: 100%;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0;
   padding: 0px 2px;
-}
-
-.textbox:focus {
-  outline: 0;
-  border-color: #66afe9;
+  width: 100%;
 }
 
 .bookmarks {
-  margin: 5px 5px;
-  padding: 3px;
+  margin: 5px 5px 0px 10px;
+  padding: 3px 3px 0px 2px;
 }
 
 .bookmark {
   display: flex;
-  border-bottom-color: #00254d;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-radius: 0.8rem;
-  padding: 3px;
-  padding-bottom: 7px;
   margin-bottom: 7px;
+  padding-bottom: 7px;
 }
 
 .bookmark-title {
   padding-left: 2px;
+  padding-top: 5px;
 }
 
 .bookmark-controls img {
-  margin: 0 4px;
-  width: 18px;
-  height: 18px;
   cursor: pointer;
+  height: 24px;
+  margin: 0 4px;
+  width: 24px;
 }
+
 .bookmark-controls {
   flex: auto;
   text-align: right;
+}
+
+.row {
+  padding-bottom: 15px;
+}
+
+p {
+  margin-bottom: 0px;
+  margin-top: 12px;
+}
+
+i {
+  font-size: 13px;
 }

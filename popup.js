@@ -9,8 +9,8 @@ const addNewBookmark = (bookmarks, bookmark) => {
   bookmarkTitleElement.className = "bookmark-title";
   controlsElement.className = "bookmark-controls";
 
-  setBookmarkAttributes("play", onPlay, controlsElement);
-  setBookmarkAttributes("delete", onDelete, controlsElement);
+  setBookmarkAttributes("Play", onPlay, controlsElement);
+  setBookmarkAttributes("Delete", onDelete, controlsElement);
 
   newBookmarkElement.id = "bookmark-" + bookmark.time;
   newBookmarkElement.className = "bookmark";
@@ -31,7 +31,7 @@ const viewBookmarks = (currentBookmarks=[]) => {
       addNewBookmark(bookmarksElement, bookmark);
     }
   } else {
-    bookmarksElement.innerHTML = '<i class="row">No bookmarks to show</i>';
+    bookmarksElement.innerHTML = '<i class="row">No bookmarks to show.</i>';
   }
 
   return;
@@ -67,6 +67,7 @@ const setBookmarkAttributes =  (src, eventListener, controlParentElement) => {
 
   controlElement.src = "assets/" + src + ".png";
   controlElement.title = src;
+  controlElement.className = src;
   controlElement.addEventListener("click", eventListener);
   controlParentElement.appendChild(controlElement);
 };
@@ -87,7 +88,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   } else {
     const container = document.getElementsByClassName("container")[0];
 
-    container.innerHTML = '<div class="title">This is not a youtube video page.</div>';
+    container.innerHTML = '<p class="title">This is not a YouTube video page.</p>';
   }
 });
 
+document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("Delete")) {
+    location.reload();
+  }
+});
