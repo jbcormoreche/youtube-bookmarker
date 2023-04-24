@@ -1,5 +1,5 @@
 (() => {
-  let youtubeLeftControls, youtubePlayer;
+  let youtubePlayer;
   let currentVideo = "";
   let currentVideoBookmarks = [];
 
@@ -26,22 +26,35 @@
   };
 
   const newVideoLoaded = async () => {
-    const bookmarkBtnExists = document.getElementsByClassName("bookmark-btn")[0];
-
+    const bookmarkBtnExists = document.getElementsByClassName("ytp-repeat-button")[0];
     currentVideoBookmarks = await fetchBookmarks();
 
     if (!bookmarkBtnExists) {
-      const bookmarkBtn = document.createElement("img");
-
-      bookmarkBtn.src = chrome.runtime.getURL("assets/bookmark.png");
-      bookmarkBtn.className = "ytp-button " + "bookmark-btn";
-      bookmarkBtn.title = "Bookmark current timestamp";
-
-      youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
+      const subtitles = document.querySelector('.ytp-subtitles-button');
+      const repeat = document.querySelector('.ytp-repeat-button');
       youtubePlayer = document.getElementsByClassName('video-stream')[0];
 
-      youtubeLeftControls.appendChild(bookmarkBtn);
-      bookmarkBtn.addEventListener("click", addNewBookmarkEventHandler);
+      if (subtitles && !repeat) {
+        const repeat = Object.assign(subtitles.cloneNode(true), {
+          textContent: '',
+          title: 'Bookmark current timestamp'
+        });
+        repeat.classList.replace('ytp-subtitles-button', 'ytp-repeat-button');
+        const bookmarkBtn = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        bookmarkBtn.setAttribute("svgns", "http://www.w3.org/2000/svg");
+        bookmarkBtn.setAttribute("viewBox", "0 0 18 18");
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute(
+          'd',
+          'M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'
+        );
+        path.setAttribute('fill', '#FFFFFF');
+        bookmarkBtn.appendChild(path);
+        repeat.appendChild(bookmarkBtn);
+        subtitles.parentNode.insertBefore(repeat, subtitles);
+
+        repeat.addEventListener("click", addNewBookmarkEventHandler);
+      };
     }
   };
 
