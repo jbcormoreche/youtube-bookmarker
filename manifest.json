@@ -1,6 +1,6 @@
 {
   "name": "YouTube Bookmarker",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Saving timestamps in YouTube videos",
   "permissions": ["storage", "tabs"],
   "host_permissions": ["https://*.youtube.com/*"],
