@@ -31,15 +31,15 @@
 
     if (!bookmarkBtnExists) {
       const subtitles = document.querySelector('.ytp-subtitles-button');
-      const repeat = document.querySelector('.ytp-repeat-button');
+      const bookmark = document.querySelector('.ytp-bookmark-button');
       youtubePlayer = document.getElementsByClassName('video-stream')[0];
 
-      if (subtitles && !repeat) {
-        const repeat = Object.assign(subtitles.cloneNode(true), {
+      if (subtitles && !bookmark) {
+        const bookmark = Object.assign(subtitles.cloneNode(true), {
           textContent: '',
           title: 'Bookmark current timestamp'
         });
-        repeat.classList.replace('ytp-subtitles-button', 'ytp-repeat-button');
+        bookmark.classList.replace('ytp-subtitles-button', 'ytp-bookmark-button');
         const bookmarkBtn = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         bookmarkBtn.setAttribute("svgns", "http://www.w3.org/2000/svg");
         bookmarkBtn.setAttribute("viewBox", "0 0 18 18");
@@ -50,10 +50,10 @@
         );
         path.setAttribute('fill', '#FFFFFF');
         bookmarkBtn.appendChild(path);
-        repeat.appendChild(bookmarkBtn);
-        subtitles.parentNode.insertBefore(repeat, subtitles);
-
-        repeat.addEventListener("click", addNewBookmarkEventHandler);
+        bookmark.appendChild(bookmarkBtn);
+        subtitles.parentNode.insertBefore(bookmark, subtitles);
+        
+        bookmark.addEventListener("click", addNewBookmarkEventHandler);
       };
     }
   };
