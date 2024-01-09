@@ -52,7 +52,7 @@
         bookmarkBtn.appendChild(path);
         bookmark.appendChild(bookmarkBtn);
         subtitles.parentNode.insertBefore(bookmark, subtitles);
-        
+
         bookmark.addEventListener("click", addNewBookmarkEventHandler);
       };
     }
@@ -81,5 +81,5 @@ const getTime = t => {
   var date = new Date(0);
   date.setSeconds(t);
 
-  return date.toISOString().substr(11, 8);
+  return date.toISOString().slice(11, 19);
 };
